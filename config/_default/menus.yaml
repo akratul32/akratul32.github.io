@@ -1,0 +1,25 @@
+main:
+  - name: Home
+    url: /#about
+    weight: 10
+  - name: Education
+    url: /#education
+    weight: 20
+  - name: Publications
+    url: /#journals
+    weight: 30
+  - name: Projects
+    url: /#projects
+    weight: 40
+  - name: Experience
+    url: /#experience
+    weight: 50
+  - name: Leadership
+    url: /#leadership
+    weight: 55
+  - name: Events
+    url: /#events
+    weight: 60
+  - name: Contact
+    url: /#contact
+    weight: 70

@@ -1,0 +1,551 @@
+// ============================================================
+// PREMIUM ACADEMIC COLOR PALETTE
+// ============================================================
+:root {
+  --primary: #0F1E3D;         // Deep midnight navy
+  --secondary: #1A5276;       // Rich teal-blue
+  --accent: #2E86C1;          // Vivid sky accent
+  --accent-light: #85C1E9;    // Light accent for highlights
+  --accent-warm: #E67E22;     // Warm amber
+  --gradient-start: #EBF5FB;  // Pale sky blue
+  --gradient-end: #FDFEFE;    // Pure white
+  --text-body: #2C3E50;       // Refined dark
+  --text-muted: #7F8C8D;      // Elegant muted
+  --bg-card: rgba(255,255,255,0.85);
+  --bg-card-solid: #FFFFFF;
+  --bg-page: #F0F4F8;
+  --border-subtle: rgba(26, 82, 118, 0.08);
+  --shadow-soft: 0 4px 20px rgba(15, 30, 61, 0.06);
+  --shadow-hover: 0 12px 35px rgba(15, 30, 61, 0.12);
+  --bs-primary: #0F1E3D;
+  --bs-secondary: #1A5276;
+}
+
+// ============================================================
+// GOOGLE FONT IMPORT — premium typography
+// ============================================================
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+// ============================================================
+// GLOBAL ANIMATIONS
+// ============================================================
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes subtlePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(46, 134, 193, 0.3); }
+  50%      { box-shadow: 0 0 0 8px rgba(46, 134, 193, 0); }
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+// ============================================================
+// SHARED HOVER MIXIN — glassmorphism card
+// ============================================================
+@mixin hover-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s ease;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 22px;
+  margin-bottom: 18px;
+  animation: fadeInUp 0.5s ease both;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(46, 134, 193, 0.2);
+    background: var(--bg-card-solid);
+  }
+}
+
+// ============================================================
+// GLOBAL CARD-LEVEL HOVERS
+// ============================================================
+.card-simple,
+.card,
+.project-card,
+.featurette,
+.media.stream-item,
+.pub-list-item,
+.view-citation {
+  @include hover-card;
+}
+
+// ============================================================
+// ABOUT — Profile + Right-side blocks
+// ============================================================
+// Vertically center the left/right columns in the About row
+#about > .container > .row {
+  align-items: center;
+}
+#profile {
+  @include hover-card;
+  text-align: center;
+  align-self: center;
+}
+
+#about .article-style {
+  @include hover-card;
+}
+
+#about .ul-interests {
+  @include hover-card;
+  list-style: none;
+  padding-left: 0;
+  li {
+    padding: 7px 12px;
+    margin: 4px 0;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    &:hover {
+      background: var(--gradient-start);
+    }
+  }
+}
+#about .col-md-5 {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+// ============================================================
+// CERTIFICATION CARDS
+// ============================================================
+.cert-card {
+  @include hover-card;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent), var(--secondary));
+    border-radius: 14px 0 0 14px;
+  }
+  padding-left: 28px;
+  h4 {
+    color: var(--secondary);
+    margin-bottom: 12px;
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    font-weight: 700;
+  }
+  ul {
+    padding-left: 1.2rem;
+    margin-bottom: 0;
+    li {
+      padding: 4px 0;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+  }
+}
+
+// ============================================================
+// SKILL CARDS
+// ============================================================
+.skill-card {
+  @include hover-card;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+  &:hover::after {
+    width: 80px;
+  }
+  h4 {
+    color: var(--secondary);
+    margin-bottom: 10px;
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    font-weight: 700;
+  }
+  p {
+    color: var(--text-body);
+    margin-bottom: 0;
+    font-size: clamp(0.85rem, 1vw, 0.95rem);
+    line-height: 1.8;
+  }
+}
+
+// ============================================================
+// SECTION CONTENT BLOCKS
+// ============================================================
+#certifications .col-12.col-lg-8,
+#skills .col-12.col-lg-8,
+#contact .col-12.col-lg-8 {
+  @include hover-card;
+}
+
+.experience .card {
+  @include hover-card;
+}
+
+// ============================================================
+// TYPOGRAPHY — Inter font, refined hierarchy
+// ============================================================
+body, h1, h2, h3, h4, h5, h6, p, a, li, span {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+h1 {
+  font-size: clamp(1.7rem, 2.8vw, 2.6rem) !important;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--primary) !important;
+}
+h2 {
+  font-size: clamp(1.4rem, 2.2vw, 2rem) !important;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--primary) !important;
+}
+h3 {
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem) !important;
+  font-weight: 600;
+  color: var(--secondary) !important;
+}
+h4, h5, h6 {
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem) !important;
+  font-weight: 600;
+  color: var(--secondary) !important;
+}
+body {
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  background-color: var(--bg-page);
+  color: var(--text-body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+p, li, span {
+  color: var(--text-body);
+}
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  &:hover {
+    color: darken(#2E86C1, 15%);
+  }
+}
+.section-subheading {
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem) !important;
+  color: var(--secondary) !important;
+  font-weight: 600;
+}
+.section-heading p {
+  color: var(--text-muted) !important;
+  font-weight: 400;
+}
+.portrait-title h2 {
+  color: var(--primary) !important;
+  font-weight: 800;
+}
+.portrait-title h3 {
+  color: var(--text-muted) !important;
+  font-weight: 400;
+}
+
+// ============================================================
+// ALTERNATING SECTION BACKGROUNDS
+// ============================================================
+section {
+  padding: 5rem 0;
+  position: relative;
+}
+section:nth-child(even) {
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+section:nth-child(odd) {
+  background: var(--bg-page);
+}
+
+// ============================================================
+// SECTION HEADING — centered accent line
+// ============================================================
+.section-heading h1 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 12px;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 3px;
+  }
+}
+
+// ============================================================
+// NAVBAR — premium frosted glass
+// ============================================================
+.navbar {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background-color: rgba(255,255,255,0.80) !important;
+  box-shadow: 0 1px 30px rgba(15, 30, 61, 0.06);
+  border-bottom: 1px solid rgba(15, 30, 61, 0.04);
+  padding: 0.6rem 0;
+  transition: all 0.3s ease;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: var(--primary) !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  &:hover {
+    color: var(--accent) !important;
+    background: rgba(46, 134, 193, 0.06);
+  }
+  &.active {
+    color: var(--accent) !important;
+    font-weight: 600;
+  }
+}
+.navbar-brand {
+  font-weight: 800 !important;
+  color: var(--primary) !important;
+  letter-spacing: -0.02em;
+  font-size: 1.15rem !important;
+}
+
+// ============================================================
+// PROFILE IMAGE — animated gradient ring
+// ============================================================
+#profile .avatar {
+  border: 4px solid transparent;
+  background-image: linear-gradient(white, white), linear-gradient(135deg, var(--accent), var(--accent-light), var(--secondary));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 0 8px 30px rgba(46, 134, 193, 0.2);
+  transition: box-shadow 0.3s ease;
+  &:hover {
+    box-shadow: 0 12px 40px rgba(46, 134, 193, 0.3);
+  }
+}
+
+// Social icons
+.network-icon li a {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(46, 134, 193, 0.08);
+  color: var(--secondary) !important;
+  transition: all 0.3s ease;
+  &:hover {
+    background: var(--accent);
+    color: #FFFFFF !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(46, 134, 193, 0.3);
+  }
+}
+
+// ============================================================
+// BUTTONS — gradient with micro-animation
+// ============================================================
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 10px 24px;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 15px rgba(46, 134, 193, 0.25);
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(46, 134, 193, 0.35);
+    background: linear-gradient(135deg, darken(#2E86C1, 5%), darken(#1A5276, 5%));
+  }
+}
+
+// ============================================================
+// PUBLICATION LIST — refined styling
+// ============================================================
+.pub-list-item .pub-icon {
+  color: var(--accent) !important;
+}
+.article-metadata {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+// ============================================================
+// FOOTER — polished
+// ============================================================
+.powered-by { display: none !important; }
+footer {
+  border-top: 1px solid rgba(15, 30, 61, 0.06);
+  margin-top: 3rem;
+  padding: 2.5rem 0;
+  color: var(--text-muted);
+  background: linear-gradient(180deg, var(--bg-page), #E8EDF2);
+}
+
+// ============================================================
+// SINGLE-PAGE LAYOUT
+// ============================================================
+html {
+  scroll-behavior: smooth;
+}
+body {
+  scroll-snap-type: y proximity;
+}
+section {
+  scroll-snap-align: start;
+  min-height: auto;
+}
+
+// ============================================================
+// RESPONSIVE TEXT WRAPPING
+// ============================================================
+body, p, a, h1, h2, h3, h4, h5, .pub-list-item, .view-citation, .stream-item {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+// ============================================================
+// DESKTOP LAYOUT (>= 992px)
+// ============================================================
+@media (min-width: 992px) {
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #about .container,
+  #projects .container,
+  #events .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 5vw !important;
+    padding-right: 5vw !important;
+  }
+
+  #about > .row > .col-12.col-lg-8 > .row {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #about > .row > .col-12.col-lg-8 > .row > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+// ============================================================
+// TABLET (≤ 991px)
+// ============================================================
+@media (max-width: 991px) {
+  .section-heading {
+    text-align: center !important;
+    margin-bottom: 1.5rem;
+  }
+}
+
+// ============================================================
+// MOBILE (≤ 768px)
+// ============================================================
+@media (max-width: 768px) {
+  section {
+    padding: 2.5rem 0;
+  }
+
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  #profile {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  #profile .avatar {
+    width: 160px;
+    height: 160px;
+  }
+
+  .network-icon {
+    justify-content: center;
+  }
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .skill-card, .cert-card {
+    padding: 16px;
+  }
+}
+
+// ============================================================
+// GLOBAL LAYOUT UTILITY
+// ============================================================
+.project-card, .view-showcase {
+  width: 100%;
+}
+
+// Selection highlight color
+::selection {
+  background: rgba(46, 134, 193, 0.2);
+  color: var(--primary);
+}
+
+// Scrollbar styling (webkit)
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-light);
+  border-radius: 4px;
+  &:hover {
+    background: var(--accent);
+  }
+}

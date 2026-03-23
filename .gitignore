@@ -1,0 +1,30 @@
+# Hugo default
+public/
+resources/
+.hugo_build.lock
+.hugo_build_lock
+
+# System
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Log files
+*.log
+
+# Private Guide
+ADMIN_GUIDE.md
+
+# Backup folders
+_backup_before_hugo/
+
+# Temp / debug files
+*.py
+build_error.txt

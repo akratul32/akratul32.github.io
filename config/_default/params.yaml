@@ -1,0 +1,72 @@
+############################
+# APPEARANCE
+############################
+appearance:
+  theme_day: minimal
+  theme_night: minimal
+  font: minimal
+  font_size: L
+
+############################
+# BRANDING
+############################
+branding:
+  name: "Abir Khan Ratul"
+  desc: "Ph.D. Student in Civil Engineering | AI for Construction | BIM Automation | XR | Robotics"
+  logo: false
+
+############################
+# FEATURES
+############################
+features:
+  enable_section_animation: true
+  enable_hover_effects: true
+  syntax_highlighter:
+    enable: true
+  math:
+    enable: true
+  privacy_pack:
+    enable: false
+  avatar:
+    gravatar: false
+    shape: circle
+
+############################
+# SEO & ANALYTICS
+############################
+marketing:
+  seo:
+    site_type: Person
+    local_business_type: ''
+    org_name: 'University of Texas at Arlington'
+    description: 'Abir Khan Ratul — Ph.D. Student at UTA researching AI for Construction, BIM Automation, Extended Reality (XR) Training, Robotics, Drone Operation, and Multimodal AI for the Built Environment.'
+    twitter: ''
+  analytics:
+    google_analytics: ''
+
+############################
+# HEADER & FOOTER
+############################
+header:
+  navbar:
+    enable: true
+    align: l
+    show_logo: true
+    show_language: false
+    show_day_night: true
+    show_search: true
+    highlight_active_link: true
+
+footer:
+  copyright:
+    notice: '© {year} Abir Khan Ratul. Built with HugoBlox.'
+    license:
+      enable: false
+
+############################
+# LOCALIZATION
+############################
+locale:
+  date_format: 'Jan 2, 2006'
+  time_format: '3:04 PM'
+  address_format: en-us

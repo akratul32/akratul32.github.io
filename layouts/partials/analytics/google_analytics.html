@@ -1,0 +1,16 @@
+{{- $ga_id := "" -}}
+{{- if site.Config.Services.GoogleAnalytics -}}
+{{- $ga_id = site.Config.Services.GoogleAnalytics.ID -}}
+{{- else if site.Params.marketing.analytics.google_analytics -}}
+{{- $ga_id = site.Params.marketing.analytics.google_analytics -}}
+{{- end -}}
+{{- if $ga_id -}}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ $ga_id }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '{{ $ga_id }}');
+</script>
+{{- end -}}

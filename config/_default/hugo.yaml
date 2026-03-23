@@ -1,0 +1,69 @@
+baseURL: "https://akratul32.github.io/"
+title: "Abir Khan Ratul | AI for Construction & BIM Automation"
+languageCode: "en-us"
+defaultContentLanguage: en
+hasCJKLanguage: false
+enableEmoji: true
+enableGitInfo: false
+enableRobotsTXT: true
+
+pagination:
+  pagerSize: 10
+
+# Services configuration
+services:
+  googleAnalytics:
+    id: ""
+
+# Module configuration (Bootstrap stack)
+module:
+  imports:
+    - path: github.com/HugoBlox/hugo-blox-builder/modules/blox-bootstrap/v5
+    - path: github.com/HugoBlox/hugo-blox-builder/modules/blox-plugin-netlify
+
+# Markup settings
+markup:
+  defaultMarkdownHandler: goldmark
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    lineNos: false
+
+imaging:
+  resampleFilter: lanczos
+  quality: 75
+  anchor: smart
+
+# Security settings
+security:
+  exec:
+    allow:
+      - ^(dart-)?sass(-embedded)?$
+      - ^go$
+      - ^git$
+      - ^npx$
+      - ^postcss$
+      - ^tailwindcss$
+    osEnv:
+      - (?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE|PROGRAMDATA)$
+  funcs:
+    getenv:
+      - ^HUGO_
+      - ^CI$
+      - ^WC_
+      - NETLIFY
+  http:
+    methods:
+      - (?i)GET|POST
+    urls:
+      - .*
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+  section:
+    - HTML
+    - RSS
